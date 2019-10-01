@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 
@@ -42,7 +43,7 @@ public class Ventana1 extends JFrame {
 					try {
 						
 						MenuKontroladorea.arrayabete(OharrakKudeatu.irakurriOharrak());
-					} catch (FileNotFoundException e1) {
+					} catch (IOException e1) {
 				
 						e1.printStackTrace();
 					}

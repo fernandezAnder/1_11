@@ -6,8 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.io.Reader;
+import java.nio.file.Files;
 import java.util.ArrayList;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
 
 
@@ -16,13 +21,15 @@ public class OharrakKudeatu {
 	//BAariable Globala
 
 
-	public static ArrayList<Oharra> irakurriOharrak() throws FileNotFoundException {
+	public static ArrayList<Oharra> irakurriOharrak() throws IOException {
 
 
 		//BARIABLEAK
 		ArrayList<Oharra> lista_oharra=new ArrayList<>();
-		FileReader fitxeroa = new FileReader("src/Oharrak.txt");
+		
+		FileReader fitxeroa = new FileReader("src/Oharrak.csv");
 		BufferedReader br = new BufferedReader(fitxeroa);
+		//CSVParser csv = new CSVParser(br, CSVFormat.DEFAULT);
 		int kont = 1;
 
 		//OHARRAREN BARIABLEAK
@@ -39,7 +46,7 @@ public class OharrakKudeatu {
 			while ((linea = br.readLine()) != null) {
 				// lerro zuriak ez irakurtzeko
 				if (!linea.equals("")) {
-					//while(!linea.isEmpty()) {
+					
 					cadena= linea.split(":");
 					if (cadena[0].equals("data")) {
 						data=cadena[1];
@@ -55,9 +62,7 @@ public class OharrakKudeatu {
 						edukia=cadena[1];
 						oharra_bete=true;
 					}
-					//}
-
-					//System.out.println(kont + " " + linea);
+				
 					kont++;
 				} else {
 					//System.out.println(linea);

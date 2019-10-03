@@ -1,18 +1,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>U1_10</groupId>
+  <groupId>U1_11</groupId>
   <artifactId>U1_10</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>U1_10</name>
+  <name>U1_11</name>
   <description>Csv ariketa</description>
   <dependencies>
-  <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+  
+  <!-- DEPENDENCIAS -->
+  	<!-- CSV -->
 	<dependency>
 	    <groupId>org.apache.commons</groupId>
 	    <artifactId>commons-csv</artifactId>
 	    <version>1.7</version>
 	</dependency>
-	  
+	<!-- XML -->
+	<dependency>
+	    <groupId>xml-apis</groupId>
+	    <artifactId>xml-apis</artifactId>
+	    <version>1.4.01</version>
+	</dependency>
+	 
+	 
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>

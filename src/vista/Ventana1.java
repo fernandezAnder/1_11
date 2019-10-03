@@ -8,6 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.JFrame;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import controlador.MenuKontroladorea;
 import modelo.OharrakKudeatu;
@@ -45,6 +48,12 @@ public class Ventana1 extends JFrame {
 						MenuKontroladorea.arrayabete(OharrakKudeatu.irakurriOharrak());
 					} catch (IOException e1) {
 				
+						e1.printStackTrace();
+					} catch (ParserConfigurationException e1) {
+						
+						e1.printStackTrace();
+					} catch (SAXException e1) {
+						
 						e1.printStackTrace();
 					}
 				

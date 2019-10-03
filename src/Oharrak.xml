@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <row>
+  <row id="1">
     <data>2019-7-3</data>
     <ordua>10:20:30</ordua>
     <nori>Ander</nori>
@@ -8,7 +8,7 @@
     <titulua>Galdera</titulua>
     <edukia>Kaixo zelan zaude?</edukia>
   </row>
-  <row>
+  <row id="2">
     <data>2019-7-3</data>
     <ordua>10:20:50</ordua>
     <nori>Aitor</nori>
@@ -16,7 +16,7 @@
     <titulua>Erantzuna</titulua>
     <edukia>Ni ondo eta zu?</edukia>
   </row>
-  <row>
+  <row id="3">
     <data>2019-7-3</data>
     <ordua>10:21:00</ordua>
     <nori>Ander</nori>
@@ -24,7 +24,7 @@
     <titulua>Erantzuna 2</titulua>
     <edukia>Ni kili-kolo.</edukia>
   </row>
-  <row>
+  <row id="4">
     <data>2019-7-3</data>
     <ordua>10:21:30</ordua>
     <nori>Aitor</nori>
@@ -32,7 +32,7 @@
     <titulua>Erantzuna 3</titulua>
     <edukia>Zer ba?</edukia>
   </row>
-  <row>
+  <row id="5">
     <data>2019-7-3</data>
     <ordua>10:21:50</ordua>
     <nori>Ander</nori>
@@ -40,7 +40,7 @@
     <titulua>Erantzuna 4</titulua>
     <edukia>Ez zaidalako programa ondo ibiltzen.</edukia>
   </row>
-  <row>
+  <row id="6">
     <data>2019-7-3</data>
     <ordua>10:22:30</ordua>
     <nori>Aitor</nori>

@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,9 +11,20 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
+import javax.sql.rowset.spi.XmlReader;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 
 
@@ -21,17 +33,20 @@ public class OharrakKudeatu {
 	//BAariable Globala
 
 
-	public static ArrayList<Oharra> irakurriOharrak() throws IOException {
+	public static ArrayList<Oharra> irakurriOharrak() throws ParserConfigurationException, SAXException, IOException {
 
 
 		//BARIABLEAK
 		ArrayList<Oharra> lista_oharra=new ArrayList<>();
-		
-		FileReader fitxeroa = new FileReader("src/Oharrak.csv");
-		BufferedReader br = new BufferedReader(fitxeroa);
-		
-		int kont = 1;
 
+		
+		File fitxeroa = new File("src/Oharrak.xml");
+		DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
+		Document dokumentua;
+		DocumentBuilder docubuilder = factoria.newDocumentBuilder();
+		dokumentua = docubuilder.parse(fitxeroa);
+		dokumentua.getDocumentElement().normalize();
+		
 		//OHARRAREN BARIABLEAK
 		String data="";
 		String ordua="";
@@ -39,32 +54,20 @@ public class OharrakKudeatu {
 		String nork="";
 		String titulua="";
 		String edukia="";
-		boolean oharra_bete=false;
 		String[] cadena;
-		try {
-			String linea = br.readLine();
-			while ((linea = br.readLine()) != null) {
-
-
-				cadena= linea.split(",");
+		boolean irten =false;
+		int i=0;
+		NodeList lista = dokumentua.getElementsByTagName("row");
+		
+		while (lista.item(i)!=null) {
+			//Node mezua =lista.item(i).toString();
+			//System.out.println(mezua.toString());
 			
-				data=cadena[0].replace("\"","");
-				ordua=cadena[1].replace("\"","");;
-				nori=cadena[2].replace("\"","");;
-				nork=cadena[3].replace("\"","");;
-				titulua=cadena[4].replace("\"","");;
-				edukia=cadena[5].replace("\"","");;
-				oharra_bete=true;	
 
-				Oharra oharra= new Oharra(data, ordua, nori, nork, titulua, edukia);
-				lista_oharra.add(oharra);
-				oharra_bete=false;
-			}
-
-			br.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
+		//	Oharra oharra= new Oharra(data, ordua, nori, nork, titulua, edukia);
+		//	lista_oharra.add(oharra);
+		i++;
+		}
 		return lista_oharra; 
 	}
 

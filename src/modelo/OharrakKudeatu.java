@@ -29,7 +29,7 @@ public class OharrakKudeatu {
 		
 		FileReader fitxeroa = new FileReader("src/Oharrak.csv");
 		BufferedReader br = new BufferedReader(fitxeroa);
-		//CSVParser csv = new CSVParser(br, CSVFormat.DEFAULT);
+		
 		int kont = 1;
 
 		//OHARRAREN BARIABLEAK
@@ -42,38 +42,25 @@ public class OharrakKudeatu {
 		boolean oharra_bete=false;
 		String[] cadena;
 		try {
-			String linea;
+			String linea = br.readLine();
 			while ((linea = br.readLine()) != null) {
-				// lerro zuriak ez irakurtzeko
-				if (!linea.equals("")) {
-					
-					cadena= linea.split(":");
-					if (cadena[0].equals("data")) {
-						data=cadena[1];
-					}else if(cadena[0].equals("ordua")) {
-						ordua=cadena[1]+":"+cadena[2];
-					}else if(cadena[0].equals("nori")) {
-						nori=cadena[1];
-					}else if(cadena[0].equals("nork")) {
-						nork=cadena[1];
-					}else if(cadena[0].equals("titulua")) {
-						titulua=cadena[1];
-					}else if(cadena[0].equals("edukia")) {
-						edukia=cadena[1];
-						oharra_bete=true;
-					}
-				
-					kont++;
-				} else {
-					//System.out.println(linea);
-				}
-				if (oharra_bete) {
-					Oharra oharra= new Oharra(data, ordua, nori, nork, titulua, edukia);
-					System.out.println(oharra);
-					lista_oharra.add(oharra);
-					oharra_bete=false;
-				}
+
+
+				cadena= linea.split(",");
+			
+				data=cadena[0].replace("\"","");
+				ordua=cadena[1].replace("\"","");;
+				nori=cadena[2].replace("\"","");;
+				nork=cadena[3].replace("\"","");;
+				titulua=cadena[4].replace("\"","");;
+				edukia=cadena[5].replace("\"","");;
+				oharra_bete=true;	
+
+				Oharra oharra= new Oharra(data, ordua, nori, nork, titulua, edukia);
+				lista_oharra.add(oharra);
+				oharra_bete=false;
 			}
+
 			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -94,13 +81,6 @@ public class OharrakKudeatu {
 			BufferedWriter bw= new BufferedWriter(idatzi);
 			for(int i=0;i<lista_oharrak.size();i++) {
 				
-//				idatzi.append("Data: "+lista_oharrak.get(i).getData());
-//				idatzi.append("Ordua: "+lista_oharrak.get(i).getOrdua());
-//				idatzi.append("Nori: "+lista_oharrak.get(i).getNori());
-//				idatzi.append("Nork: "+lista_oharrak.get(i).getNork());
-//				idatzi.append("Titulua: "+lista_oharrak.get(i).getTitulua());
-//				idatzi.append("Edukia: "+lista_oharrak.get(i).getEdukia());
-//				idatzi.append("");
 				
 				bw.write("data:"+lista_oharrak.get(i).getData());
 				bw.flush();

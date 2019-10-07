@@ -4,6 +4,9 @@ package controlador;
 
 import java.util.ArrayList;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import modelo.Oharra;
 import modelo.OharrakKudeatu;
 import vista.*;
@@ -39,6 +42,11 @@ public class MenuKontroladorea {
 		
 	}
 	public static void oharrakIdatzi() {
-		OharrakKudeatu.gordeOharrak(lista_oharrak);
+		try {
+			OharrakKudeatu.gordeOharrak(lista_oharrak);
+		} catch (TransformerException | ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
